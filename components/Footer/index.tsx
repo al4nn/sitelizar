@@ -1,23 +1,33 @@
-import { Code2 } from "lucide-react";
-import Link from "next/link";
+"use client";
 
-export const Footer = () => {
+import { footer } from "@/types/global/footer";
+import { scrollToHash } from "@/utils/scrollToHash";
+
+export const Footer = ({ data }: { data: footer | null }) => {
     return (
         <footer className="bg-black border-t border-white/10 pt-16 pb-8">
             <div className="container">
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
                     <div className="col-span-1 md:col-span-2">
-                        <a href="#" className="flex items-center gap-2 mb-6">
-                            <Code2 className="w-6 h-6 text-brand-blue" />
-                            <span className="font-display font-bold text-2xl text-white">
-                                Sitelizar
-                                <span className="text-brand-green">.</span>
-                            </span>
-                        </a>
+                        <button
+                            className="flex items-center gap-2 mb-6 cursor-pointer"
+                            onClick={() => scrollToHash("home")}
+                        >
+                            <div
+                                className="w-6 h-6 text-blue"
+                                dangerouslySetInnerHTML={{
+                                    __html: data?.logo.svg || "",
+                                }}
+                            />
+                            <div
+                                className="font-display font-bold text-2xl text-white"
+                                dangerouslySetInnerHTML={{
+                                    __html: data?.logo.texto ?? "",
+                                }}
+                            />
+                        </button>
                         <p className="text-gray-500 max-w-sm mb-6">
-                            Criando o futuro da web, um pixel de cada vez.
-                            Especialistas em design de interface e
-                            desenvolvimento de alta performance.
+                            {data?.texto}
                         </p>
                         {/* <div className="flex gap-4">
                             <a
@@ -44,52 +54,54 @@ export const Footer = () => {
                     <div>
                         <h4 className="font-bold text-white mb-6">Serviços</h4>
                         <ul className="space-y-4">
-                            <li>
-                                <a
-                                    className="text-gray-500 hover:text-brand-blue transition-colors text-sm"
-                                    href="#servicos"
-                                >
-                                    Sites Institucionais
-                                </a>
-                            </li>
-                            <li>
-                                <a
-                                    className="text-gray-500 hover:text-brand-blue transition-colors text-sm"
-                                    href="#servicos"
-                                >
-                                    Landing Pages
-                                </a>
-                            </li>
-                            <li>
-                                <a
-                                    className="text-gray-500 hover:text-brand-blue transition-colors text-sm"
-                                    href="#servicos"
-                                >
-                                    Otimização Mobile
-                                </a>
-                            </li>
-                            <li>
-                                <a
-                                    className="text-gray-500 hover:text-brand-blue transition-colors text-sm"
-                                    href="#servicos"
-                                >
-                                    SEO & Performance
-                                </a>
-                            </li>
+                            {data?.servicos.map((servico, index) => {
+                                return (
+                                    <li key={index}>
+                                        <button
+                                            className="text-gray-500 hover:text-blue transition-colors text-sm cursor-pointer"
+                                            onClick={() =>
+                                                scrollToHash(
+                                                    servico.link.url.substring(
+                                                        1
+                                                    )
+                                                )
+                                            }
+                                        >
+                                            <p
+                                                dangerouslySetInnerHTML={{
+                                                    __html: servico.link.title,
+                                                }}
+                                            />
+                                        </button>
+                                    </li>
+                                );
+                            })}
                         </ul>
                     </div>
 
                     <div>
                         <h4 className="font-bold text-white mb-6">Empresa</h4>
                         <ul className="space-y-4">
-                            <li>
-                                <a
-                                    href="#contato"
-                                    className="text-gray-500 hover:text-brand-blue transition-colors text-sm"
-                                >
-                                    Contato
-                                </a>
-                            </li>
+                            {data?.links.map((link, index) => {
+                                return (
+                                    <li key={index}>
+                                        <button
+                                            className="text-gray-500 hover:text-blue transition-colors text-sm cursor-pointer"
+                                            onClick={() =>
+                                                scrollToHash(
+                                                    link.link.url.substring(1)
+                                                )
+                                            }
+                                        >
+                                            <p
+                                                dangerouslySetInnerHTML={{
+                                                    __html: link.link.title,
+                                                }}
+                                            />
+                                        </button>
+                                    </li>
+                                );
+                            })}
                         </ul>
                     </div>
                 </div>
