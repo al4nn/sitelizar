@@ -8,7 +8,7 @@ const nextConfig: NextConfig = {
     images: {
         domains: [
             "localhost",
-            "sitelizar-backend.localhost",
+            "sitelizar.localhost",
             "www.sitelizar.com.br",
         ],
     },

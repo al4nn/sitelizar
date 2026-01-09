@@ -2,8 +2,7 @@ import { Home } from "@/types/pages/home";
 import { useQuery } from "@tanstack/react-query";
 
 const API =
-    process.env.NEXT_PUBLIC_API_URL ||
-    "http://sitelizar-backend.localhost:8080/wp-json";
+    process.env.NEXT_PUBLIC_API_URL || "http://sitelizar.localhost/wp-json";
 
 export function useHome() {
     return useQuery<Home>({

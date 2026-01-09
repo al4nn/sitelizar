@@ -2,7 +2,7 @@ import { useMutation } from "@tanstack/react-query";
 
 const API =
     process.env.NEXT_PUBLIC_API_URL ||
-    "http://sitelizar-backend.localhost:8080/wp-json";
+    "http://sitelizar.localhost/wp-json";
 
 type ContactFormData = {
     nome: string;

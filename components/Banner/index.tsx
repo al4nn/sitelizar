@@ -53,9 +53,7 @@ export const Banner: React.FC<{ data: BannerGroup }> = ({ data }) => {
                 >
                     <button
                         className="group relative px-8 py-4 bg-blue text-dark font-bold text-lg rounded-lg overflow-hidden transition-all hover:shadow-[0_0_20px_rgba(0,212,255,0.4)] cursor-pointer"
-                        onClick={() =>
-                            scrollToHash(data.url_botao)
-                        }
+                        onClick={() => scrollToHash(data.url_botao)}
                     >
                         <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
                         <span className="relative flex items-center justify-center gap-2">

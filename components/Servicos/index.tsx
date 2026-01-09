@@ -8,7 +8,10 @@ export const Servicos = ({ data }: { data: ServicesGroup }) => {
         <section className="py-24 bg-dark relative" id="servicos">
             <div className="container">
                 <div className="mb-16">
-                    <div className="font-display font-bold text-4xl md:text-5xl mb-6" dangerouslySetInnerHTML={{ __html: data.titulo }} />
+                    <div
+                        className="font-display font-bold text-4xl md:text-5xl mb-6"
+                        dangerouslySetInnerHTML={{ __html: data.titulo }}
+                    />
                     <div className="w-20 h-1 bg-green"></div>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
